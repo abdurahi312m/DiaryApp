@@ -11,14 +11,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import kg.abu.diaryapp.navigation.Screen
+import kg.abu.diaryapp.navigation.SetupNavGraph
 import kg.abu.diaryapp.ui.theme.DiaryAppTheme
-// application-0-szotf
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
             DiaryAppTheme {
+                val navController = rememberNavController()
+                SetupNavGraph(
+                    startDestination = Screen.Authentication.route,
+                    navController = navController
+                )
             }
         }
     }
