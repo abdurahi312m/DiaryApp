@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
+import io.realm.kotlin.mongodb.App
 import kg.abu.diaryapp.navigation.Screen
 import kg.abu.diaryapp.navigation.SetupNavGraph
 import kg.abu.diaryapp.ui.theme.DiaryAppTheme
+import kg.abu.diaryapp.util.Constants.APP_ID
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +19,16 @@ class MainActivity : ComponentActivity() {
             DiaryAppTheme {
                 val navController = rememberNavController()
                 SetupNavGraph(
-                    startDestination = Screen.Authentication.route,
+                    startDestination = getStartDestination(),
                     navController = navController
                 )
             }
         }
     }
+}
+
+private fun getStartDestination(): String {
+    val user = App.create(APP_ID).currentUser
+    return if (user != null && user.loggedIn) Screen.Home.route
+    else Screen.Authentication.route
 }
