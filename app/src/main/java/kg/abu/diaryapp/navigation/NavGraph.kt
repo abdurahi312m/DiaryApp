@@ -3,6 +3,7 @@ package kg.abu.diaryapp.navigation
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,6 +19,7 @@ import androidx.navigation.navArgument
 import com.stevdzasan.messagebar.rememberMessageBarState
 import com.stevdzasan.onetap.rememberOneTapSignInState
 import io.realm.kotlin.mongodb.App
+import kg.abu.diaryapp.data.repository.MongoDB
 import kg.abu.diaryapp.presentation.components.DisplayAlertDialog
 import kg.abu.diaryapp.presentation.screens.auth.AuthenticationScreen
 import kg.abu.diaryapp.presentation.screens.auth.AuthenticationViewModel
@@ -110,11 +112,15 @@ fun NavGraphBuilder.homeRoute(
                     drawerState.open()
                 }
             },
-            navigateToWrite = navigateToWrite,
             onSignOutClicked = {
                 signOutDialogOpened = true
-            }
+            },
+            navigateToWrite = navigateToWrite
         )
+        
+        LaunchedEffect(key1 = Unit) {
+            MongoDB.configureTheRealm()
+        }
 
         DisplayAlertDialog(
             title = "Sign Out",

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.devtools.ksp'
-//    id 'io.realm.kotlin'
+    id 'io.realm.kotlin'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 //    id 'com.google.gms.google-services'
@@ -90,7 +90,7 @@ dependencies {
     implementation "androidx.core:core-splashscreen:1.0.1"
 
     // Mongo DB Realm
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2"
     implementation "io.realm.kotlin:library-sync:1.11.0"
 
     // Dagger Hilt
