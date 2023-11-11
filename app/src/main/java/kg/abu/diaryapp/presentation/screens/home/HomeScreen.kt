@@ -44,19 +44,20 @@ fun HomeScreen(
         }, floatingActionButton = {
             FloatingActionButton(onClick = navigateToWrite) {
                 Icon(
-                    imageVector = Icons.Default.Edit,
-                    contentDescription = "New Diary Icon"
+                    imageVector = Icons.Default.Edit, contentDescription = "New Diary Icon"
                 )
             }
-        }, content = {})
+        },
+            content = {
+                HomeContent(diaryNotes = mapOf(), onClick = {})
+            }
+        )
     }
 }
 
 @Composable
 fun NavigationDrawer(
-    drawerState: DrawerState,
-    onSignOutClicked: () -> Unit,
-    content: @Composable () -> Unit
+    drawerState: DrawerState, onSignOutClicked: () -> Unit, content: @Composable () -> Unit
 ) {
     ModalNavigationDrawer(
         drawerState = drawerState, drawerContent = {
