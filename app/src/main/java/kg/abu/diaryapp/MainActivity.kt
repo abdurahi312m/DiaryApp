@@ -7,6 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import io.realm.kotlin.mongodb.App
+import kg.abu.diaryapp.data.repository.MongoDB
 import kg.abu.diaryapp.navigation.Screen
 import kg.abu.diaryapp.navigation.SetupNavGraph
 import kg.abu.diaryapp.ui.theme.DiaryAppTheme
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        MongoDB.configureTheRealm()
         setContent {
             DiaryAppTheme {
                 val navController = rememberNavController()
