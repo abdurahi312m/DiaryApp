@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DiaryApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="kg.abdurahim.diaryapp.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.DiaryApp.MySplash">
             <intent-filter>
